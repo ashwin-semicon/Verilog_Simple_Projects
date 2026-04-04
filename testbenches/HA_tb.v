@@ -8,22 +8,13 @@ module HA_tb;
         .carry(Carry)
     );
     initial begin
-        // Test case 1: A=0, B=0
-        A = 0; B = 0; #10;
-        $display("A=%b, B=%b => Sum=%b, Carry=%b", A, B, Sum, Carry);
-        
-        // Test case 2: A=0, B=1
-        A = 0; B = 1; #10;
-        $display("A=%b, B=%b => Sum=%b, Carry=%b", A, B, Sum, Carry);
-        
-        // Test case 3: A=1, B=0
-        A = 1; B = 0; #10;
-        $display("A=%b, B=%b => Sum=%b, Carry=%b", A, B, Sum, Carry);
-        
-        // Test case 4: A=1, B=1
-        A = 1; B = 1; #10;
-        $display("A=%b, B=%b => Sum=%b, Carry=%b", A, B, Sum, Carry);
-        
-        $finish;
+        $dumpfile("HA_tb.vcd");
+        $dumpvars(0, HA_tb);
+        $monitor("time=%t, A=%b, B=%b => Sum=%b, Carry=%b", $time, A, B, Sum, Carry);
+        #0 A=0; B=0;
+        #10 A=0; B=1;
+        #10 A=1; B=0;
+        #10 A=1; B=1;
+        #10 $finish;
     end
 endmodule
