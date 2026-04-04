@@ -3,6 +3,8 @@ module FA_tb;
     wire Sum, Carry;
     FA uut (A, B, Cin, Sum, Carry);
     initial begin
+        $dumpfile("FA_tb.vcd");
+        $dumpvars(0, FA_tb);
         $monitor("time=%t, A=%b, B=%b, Cin=%b => Sum=%b, Carry=%b", $time, A, B, Cin, Sum, Carry);
         #0 A=0; B=0; Cin=0;
         #10 A=0; B=0; Cin=1;
@@ -12,6 +14,6 @@ module FA_tb;
         #10 A=1; B=0; Cin=1;
         #10 A=1; B=1; Cin=0;
         #10 A=1; B=1; Cin=1;
-        $finish;
+        #10 $finish;
     end
 endmodule
