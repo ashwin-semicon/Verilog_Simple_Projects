@@ -1,0 +1,10 @@
+# Compiled files
+out
+*.out
+
+# Simulation files
+*.vcd
+*.log
+
+# Temporary files
+*.tmp
