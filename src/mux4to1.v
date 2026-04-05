@@ -1,7 +1,7 @@
 module mux4to1_case(
     input [3:0] in,
     input [1:0] sel,
-    output out
+    output reg  out
 );
     always @(*) begin
         case(sel)
@@ -17,12 +17,12 @@ endmodule
 module mux4to1_using2to1(
     input [3:0] in,
     input [1:0] sel,
-    output out
+    output out //Note here we didn't use reg because we are using the output of the 2 to 1 muxes directly without any always block
 );
 wire w1,w2;
-two_to_one_mux_dataflow m1(in[1:0],sel[0],w1);
-two_to_one_mux_dataflow m2(in[3:2],sel[0],w2);
-two_to_one_mux_dataflow m3({w2,w1},sel[1],out); //here we used concatination of the output of the both of the 2 to 1 muxes 
+two_to_one_mux_case m1(in[1:0],sel[0],w1);
+two_to_one_mux_case m2(in[3:2],sel[0],w2);
+two_to_one_mux_case m3({w2,w1},sel[1],out); //here we used concatination of the output of the both of the 2 to 1 muxes 
 endmodule
 
 module mux4to1_ifelse (
