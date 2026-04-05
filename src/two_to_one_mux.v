@@ -1,4 +1,4 @@
-module two_to_one_mux_dataflow (
+module two_to_one_mux_dataflow(
     input [1:0] in,
     input sel,
     output out
