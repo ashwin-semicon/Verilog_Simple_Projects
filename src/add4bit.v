@@ -4,8 +4,8 @@ module add4bit_dataflow(
     output [3:0] sum,
     output cout
 );
-    assign sum = a ^ b ^ {3'b000,cin};
-    assign cout = (a & b) | (cin & (a ^ b));
+    assign sum = a ^ b ^ cin;
+    assign cout = (a & b) | (b & cin) | (a & cin);
 endmodule
 
 module add4bit_usingFA (
